@@ -3,6 +3,10 @@
 #include "Socio.h"
 #include "Actividad.h"
 #include "Inscripcion.h"
+#include "Pago.h"
+#include "Cancha.h"
+#include "Reserva.h"
+#include "Asistencia.h"
 using namespace std;
 
 void mostrarEncabezado(const char* titulo, int color);
@@ -10,6 +14,10 @@ void mostrarMenuPrincipal();
 void menuSocios();
 void menuActividades();
 void menuInscripciones();
+void menuPagos();
+void menuCanchas();
+void menuReservas();
+void menuAsistencia();
 
 int main() {
     mostrarMenuPrincipal();
@@ -58,6 +66,26 @@ void mostrarMenuPrincipal() {
         rlutil::setColor(rlutil::WHITE);
         cout << "[3] Gestion de Inscripciones" << endl;
         
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        cout << "  " << char(175) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[4] Gestion de Pagos" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        cout << "  " << char(175) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[5] Gestion de Canchas" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        cout << "  " << char(175) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[6] Gestion de Reservas" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        cout << "  " << char(175) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[7] Gestion de Asistencia" << endl;
+        
         cout << "\n  " << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << endl;
         
         rlutil::setColor(rlutil::LIGHTRED);
@@ -75,6 +103,10 @@ void mostrarMenuPrincipal() {
             case 1: menuSocios(); break;
             case 2: menuActividades(); break;
             case 3: menuInscripciones(); break;
+            case 4: menuPagos(); break;
+            case 5: menuCanchas(); break;
+            case 6: menuReservas(); break;
+            case 7: menuAsistencia(); break;
             case 0: 
                 rlutil::cls();
                 rlutil::setColor(rlutil::LIGHTGREEN);
@@ -238,6 +270,241 @@ void menuInscripciones() {
         cout << "  " << char(16) << " ";
         rlutil::setColor(rlutil::WHITE);
         cout << "[5] Cancelar Inscripcion" << endl;
+        
+        cout << "\n  " << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << endl;
+        
+        rlutil::setColor(rlutil::LIGHTRED);
+        cout << "  " << char(27) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[0] Volver al Menu Principal" << endl;
+        
+        cout << "\n  ";
+        rlutil::setColor(rlutil::YELLOW);
+        cout << "Seleccione una opcion: ";
+        rlutil::setColor(rlutil::WHITE);
+        cin >> opcion;
+
+        switch(opcion) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                rlutil::setColor(rlutil::LIGHTMAGENTA);
+                cout << "\n  [INFO] Funcion en desarrollo..." << endl;
+                rlutil::setColor(rlutil::WHITE);
+                rlutil::anykey();
+                break;
+        }
+    } while(opcion != 0);
+}
+void menuPagos() {
+    int opcion;
+    do {
+        rlutil::cls();
+        mostrarEncabezado("GESTION DE PAGOS", rlutil::LIGHTBLUE);
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[1] Registrar Nuevo Pago" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[2] Listar Todos los Pagos" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[3] Buscar Pagos por Socio" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[4] Modificar Estado de Pago" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[5] Reporte de Pagos" << endl;
+        
+        cout << "\n  " << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << endl;
+        
+        rlutil::setColor(rlutil::LIGHTRED);
+        cout << "  " << char(27) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[0] Volver al Menu Principal" << endl;
+        
+        cout << "\n  ";
+        rlutil::setColor(rlutil::YELLOW);
+        cout << "Seleccione una opcion: ";
+        rlutil::setColor(rlutil::WHITE);
+        cin >> opcion;
+
+        switch(opcion) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                rlutil::setColor(rlutil::LIGHTMAGENTA);
+                cout << "\n  [INFO] Funcion en desarrollo..." << endl;
+                rlutil::setColor(rlutil::WHITE);
+                rlutil::anykey();
+                break;
+        }
+    } while(opcion != 0);
+}
+
+void menuCanchas() {
+    int opcion;
+    do {
+        rlutil::cls();
+        mostrarEncabezado("GESTION DE CANCHAS", rlutil::BROWN);
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[1] Agregar Nueva Cancha" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[2] Listar Todas las Canchas" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[3] Buscar Cancha" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[4] Modificar Datos de Cancha" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[5] Cambiar Disponibilidad" << endl;
+        
+        cout << "\n  " << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << endl;
+        
+        rlutil::setColor(rlutil::LIGHTRED);
+        cout << "  " << char(27) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[0] Volver al Menu Principal" << endl;
+        
+        cout << "\n  ";
+        rlutil::setColor(rlutil::YELLOW);
+        cout << "Seleccione una opcion: ";
+        rlutil::setColor(rlutil::WHITE);
+        cin >> opcion;
+
+        switch(opcion) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                rlutil::setColor(rlutil::LIGHTMAGENTA);
+                cout << "\n  [INFO] Funcion en desarrollo..." << endl;
+                rlutil::setColor(rlutil::WHITE);
+                rlutil::anykey();
+                break;
+        }
+    } while(opcion != 0);
+}
+
+void menuReservas() {
+    int opcion;
+    do {
+        rlutil::cls();
+        mostrarEncabezado("GESTION DE RESERVAS", rlutil::CYAN);
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[1] Nueva Reserva" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[2] Listar Todas las Reservas" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[3] Buscar Reservas por Socio" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[4] Buscar Reservas por Cancha" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[5] Cancelar Reserva" << endl;
+        
+        cout << "\n  " << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << endl;
+        
+        rlutil::setColor(rlutil::LIGHTRED);
+        cout << "  " << char(27) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[0] Volver al Menu Principal" << endl;
+        
+        cout << "\n  ";
+        rlutil::setColor(rlutil::YELLOW);
+        cout << "Seleccione una opcion: ";
+        rlutil::setColor(rlutil::WHITE);
+        cin >> opcion;
+
+        switch(opcion) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+                rlutil::setColor(rlutil::LIGHTMAGENTA);
+                cout << "\n  [INFO] Funcion en desarrollo..." << endl;
+                rlutil::setColor(rlutil::WHITE);
+                rlutil::anykey();
+                break;
+        }
+    } while(opcion != 0);
+}
+
+void menuAsistencia() {
+    int opcion;
+    do {
+        rlutil::cls();
+        mostrarEncabezado("GESTION DE ASISTENCIA", rlutil::LIGHTRED);
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[1] Registrar Asistencia" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[2] Listar Asistencias" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[3] Buscar por Socio" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[4] Buscar por Actividad" << endl;
+        
+        rlutil::setColor(rlutil::LIGHTCYAN);
+        cout << "  " << char(16) << " ";
+        rlutil::setColor(rlutil::WHITE);
+        cout << "[5] Reporte de Asistencia" << endl;
         
         cout << "\n  " << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << char(196) << endl;
         
