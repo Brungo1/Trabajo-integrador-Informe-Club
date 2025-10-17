@@ -1,8 +1,8 @@
 #ifndef ACTIVIDAD_H
 #define ACTIVIDAD_H
-#define _CRT_SECURE_NO_WARNINGS
 #include <cstring>
 #include "Fecha.h"
+#pragma warning(disable: 4996)
 
 class Actividad {
 private:
