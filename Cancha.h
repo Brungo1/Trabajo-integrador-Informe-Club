@@ -1,6 +1,7 @@
 #ifndef CANCHA_H
 #define CANCHA_H
 #include <cstring>
+#include <cstdio>
 #pragma warning(disable: 4996)
 
 class Cancha {
@@ -35,6 +36,24 @@ public:
     void setCapacidad(int cap) { _capacidad = cap; }
     void setTarifaHora(float tarifa) { _tarifaHora = tarifa; }
     void setDisponible(bool disp) { _disponible = disp; }
+
+    bool escribirDisco(int pos) {
+        FILE* p = fopen("canchas.dat", "rb+");
+        if (p == NULL) return false;
+        fseek(p, pos * sizeof(Cancha), SEEK_SET);
+        bool ok = fwrite(this, sizeof(Cancha), 1, p) == 1;
+        fclose(p);
+        return ok;
+    }
+
+    bool leerDisco(int pos) {
+        FILE* p = fopen("canchas.dat", "rb");
+        if (p == NULL) return false;
+        fseek(p, pos * sizeof(Cancha), SEEK_SET);
+        bool ok = fread(this, sizeof(Cancha), 1, p) == 1;
+        fclose(p);
+        return ok;
+    }
 };
 
 #endif

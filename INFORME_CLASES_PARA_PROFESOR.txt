@@ -1,0 +1,506 @@
+═══════════════════════════════════════════════════════════════════════════
+  INFORME DE CLASES - TRABAJO PRÁCTICO INTEGRADOR
+  Sistema de Gestión de Actividades de un Club
+  
+  Materia: Programación II
+  Integrantes: Nicolas Bernal y Bruno Scapolla
+═══════════════════════════════════════════════════════════════════════════
+
+RESPUESTAS A LAS CORRECCIONES DEL PROFESOR:
+───────────────────────────────────────────────────────────────────────────
+
+1. ✅ "No están los archivos de datos definidos"
+   RESPUESTA: Se definieron 7 archivos de datos binarios (.dat)
+
+2. ✅ "¿Cómo se van a manipular los archivos de datos?"
+   RESPUESTA: Se crearon clases de tipo Archivo para gestionar cada entidad
+
+3. ✅ "¿Se van a usar clases de tipo Archivo?"
+   RESPUESTA: SÍ, se implementaron 7 clases Archivo con métodos CRUD
+
+4. ✅ "¿Para qué se usan los métodos leerDisco() y escribirDisco()?"
+   RESPUESTA: Permiten que cada objeto se persista a sí mismo en disco
+
+═══════════════════════════════════════════════════════════════════════════
+  TABLA RESUMEN DE CLASES
+═══════════════════════════════════════════════════════════════════════════
+
+┌────┬─────────────────────┬──────────────┬─────────────────────────────┐
+│ N° │ NOMBRE CLASE        │ TIPO         │ ARCHIVO ASOCIADO            │
+├────┼─────────────────────┼──────────────┼─────────────────────────────┤
+│ 1  │ Socio               │ Entidad      │ socios.dat                  │
+│ 2  │ Actividad           │ Entidad      │ actividades.dat             │
+│ 3  │ Cancha              │ Entidad      │ canchas.dat                 │
+│ 4  │ Reserva             │ Entidad      │ reservas.dat                │
+│ 5  │ Pago                │ Entidad      │ pagos.dat                   │
+│ 6  │ Inscripcion         │ Entidad      │ inscripciones.dat           │
+│ 7  │ Asistencia          │ Entidad      │ asistencias.dat             │
+│ 8  │ Fecha               │ Entidad      │ fechas.dat                  │
+├────┼─────────────────────┼──────────────┼─────────────────────────────┤
+│ 9  │ ArchivoSocio        │ Persistencia │ Gestiona socios.dat         │
+│ 10 │ ArchivoActividad    │ Persistencia │ Gestiona actividades.dat    │
+│ 11 │ ArchivoCancha       │ Persistencia │ Gestiona canchas.dat        │
+│ 12 │ ArchivoReserva      │ Persistencia │ Gestiona reservas.dat       │
+│ 13 │ ArchivoPago         │ Persistencia │ Gestiona pagos.dat          │
+│ 14 │ ArchivoInscripcion  │ Persistencia │ Gestiona inscripciones.dat  │
+│ 15 │ ArchivoAsistencia   │ Persistencia │ Gestiona asistencias.dat    │
+└────┴─────────────────────┴──────────────┴─────────────────────────────┘
+
+TOTAL: 15 CLASES (8 de Entidad + 7 de Persistencia)
+
+═══════════════════════════════════════════════════════════════════════════
+  DETALLE DE CLASES DE ENTIDAD
+═══════════════════════════════════════════════════════════════════════════
+
+CLASE 1: SOCIO
+───────────────────────────────────────────────────────────────────────────
+Archivo: Socio.h
+Propósito: Representa un socio del club
+
+ATRIBUTOS:
+  • NumeroSocio [int] - Identificador único autoasignado
+  • DNI [int] - Documento Nacional de Identidad
+  • Nombre [char[30]] - Nombre del socio
+  • Apellido [char[30]] - Apellido del socio
+  • Telefono [char[20]] - Número de contacto
+  • Email [char[50]] - Correo electrónico
+  • FechaNacimiento [Fecha] - Fecha de nacimiento
+  • Eliminado [bool] - Estado del registro (activo/eliminado)
+
+MÉTODOS PRINCIPALES:
+  • Getters y Setters para todos los atributos
+  • escribirDisco(pos: int): bool - Guarda el objeto en disco
+  • leerDisco(pos: int): bool - Lee el objeto desde disco
+
+───────────────────────────────────────────────────────────────────────────
+
+CLASE 2: ACTIVIDAD
+───────────────────────────────────────────────────────────────────────────
+Archivo: Actividad.h
+Propósito: Representa una actividad del club
+
+ATRIBUTOS:
+  • NumeroActividad [int] - Identificador único
+  • Nombre [char[50]] - Nombre de la actividad
+  • Responsable [char[50]] - Persona a cargo
+  • FechaInicio [Fecha] - Fecha de inicio
+  • Arancel [float] - Costo de la actividad
+  • Activa [bool] - Estado (activa/inactiva)
+
+MÉTODOS PRINCIPALES:
+  • Getters y Setters para todos los atributos
+  • escribirDisco(pos: int): bool
+  • leerDisco(pos: int): bool
+
+───────────────────────────────────────────────────────────────────────────
+
+CLASE 3: CANCHA
+───────────────────────────────────────────────────────────────────────────
+Archivo: Cancha.h
+Propósito: Representa una cancha deportiva del club
+
+ATRIBUTOS:
+  • NumeroCancha [int] - Identificador único
+  • Nombre [char[50]] - Nombre de la cancha
+  • TipoDeporte [char[30]] - Deporte que se practica
+  • Capacidad [int] - Cantidad de personas
+  • TarifaHora [float] - Costo por hora de uso
+  • Disponible [bool] - Estado de disponibilidad
+
+MÉTODOS PRINCIPALES:
+  • Getters y Setters para todos los atributos
+  • escribirDisco(pos: int): bool
+  • leerDisco(pos: int): bool
+
+───────────────────────────────────────────────────────────────────────────
+
+CLASE 4: RESERVA
+───────────────────────────────────────────────────────────────────────────
+Archivo: Reserva.h
+Propósito: Representa una reserva de cancha
+
+ATRIBUTOS:
+  • NumeroReserva [int] - Identificador único
+  • NumeroSocio [int] - Socio que reserva
+  • NumeroCancha [int] - Cancha reservada
+  • FechaReserva [Fecha] - Fecha de la reserva
+  • HoraInicio [int] - Hora de inicio
+  • HoraFin [int] - Hora de finalización
+  • Confirmada [bool] - Estado de confirmación
+
+MÉTODOS PRINCIPALES:
+  • Getters y Setters para todos los atributos
+  • escribirDisco(pos: int): bool
+  • leerDisco(pos: int): bool
+
+───────────────────────────────────────────────────────────────────────────
+
+CLASE 5: PAGO
+───────────────────────────────────────────────────────────────────────────
+Archivo: Pago.h
+Propósito: Representa un pago realizado por un socio
+
+ATRIBUTOS:
+  • NumeroPago [int] - Identificador único
+  • NumeroSocio [int] - Socio que realiza el pago
+  • Monto [float] - Cantidad pagada
+  • Concepto [char[50]] - Descripción del pago
+  • FechaPago [Fecha] - Fecha del pago
+  • Procesado [bool] - Estado de procesamiento
+
+MÉTODOS PRINCIPALES:
+  • Getters y Setters para todos los atributos
+  • escribirDisco(pos: int): bool
+  • leerDisco(pos: int): bool
+
+───────────────────────────────────────────────────────────────────────────
+
+CLASE 6: INSCRIPCION
+───────────────────────────────────────────────────────────────────────────
+Archivo: Inscripcion.h
+Propósito: Relaciona socios con actividades
+
+ATRIBUTOS:
+  • NumeroActividad [int] - Actividad inscrita
+  • NumeroSocio [int] - Socio inscrito
+  • FechaInscripcion [Fecha] - Fecha de inscripción
+
+MÉTODOS PRINCIPALES:
+  • Getters y Setters para todos los atributos
+  • escribirDisco(pos: int): bool
+  • leerDisco(pos: int): bool
+
+───────────────────────────────────────────────────────────────────────────
+
+CLASE 7: ASISTENCIA
+───────────────────────────────────────────────────────────────────────────
+Archivo: Asistencia.h
+Propósito: Registra la asistencia de socios a actividades
+
+ATRIBUTOS:
+  • NumeroSocio [int] - Socio que asiste
+  • NumeroActividad [int] - Actividad a la que asiste
+  • FechaAsistencia [Fecha] - Fecha de asistencia
+  • Presente [bool] - Indicador de presencia
+
+MÉTODOS PRINCIPALES:
+  • Getters y Setters para todos los atributos
+  • escribirDisco(pos: int): bool
+  • leerDisco(pos: int): bool
+
+───────────────────────────────────────────────────────────────────────────
+
+CLASE 8: FECHA
+───────────────────────────────────────────────────────────────────────────
+Archivo: Fecha.h
+Propósito: Representa una fecha (día/mes/año)
+
+ATRIBUTOS:
+  • Dia [int] - Día del mes (1-31)
+  • Mes [int] - Mes del año (1-12)
+  • Anio [int] - Año
+
+MÉTODOS PRINCIPALES:
+  • Getters y Setters para todos los atributos
+  • escribirDisco(pos: int): bool
+  • leerDisco(pos: int): bool
+
+═══════════════════════════════════════════════════════════════════════════
+  DETALLE DE CLASES DE PERSISTENCIA (ARCHIVO)
+═══════════════════════════════════════════════════════════════════════════
+
+CLASE 9: ARCHIVOSOCIO
+───────────────────────────────────────────────────────────────────────────
+Archivo: ArchivoSocio.h
+Archivo de datos: socios.dat
+Propósito: Gestiona la persistencia de objetos Socio
+
+ATRIBUTOS:
+  • nombreArchivo [char[30]] - Nombre del archivo binario
+
+MÉTODOS:
+  • guardar(socio: Socio): bool
+    └─ Agrega un nuevo socio al archivo
+  
+  • leer(pos: int): Socio
+    └─ Lee un socio desde una posición específica
+  
+  • contarRegistros(): int
+    └─ Retorna la cantidad de socios en el archivo
+  
+  • modificar(socio: Socio, pos: int): bool
+    └─ Modifica un socio en una posición específica
+  
+  • buscarPorNumero(numeroSocio: int): int
+    └─ Busca un socio por su número
+  
+  • buscarPorDni(dni: int): int
+    └─ Busca un socio por su DNI
+
+───────────────────────────────────────────────────────────────────────────
+
+CLASE 10: ARCHIVOACTIVIDAD
+───────────────────────────────────────────────────────────────────────────
+Archivo: ArchivoActividad.h
+Archivo de datos: actividades.dat
+Propósito: Gestiona la persistencia de objetos Actividad
+
+ATRIBUTOS:
+  • nombreArchivo [char[30]]
+
+MÉTODOS:
+  • guardar(actividad: Actividad): bool
+  • leer(pos: int): Actividad
+  • contarRegistros(): int
+  • modificar(actividad: Actividad, pos: int): bool
+
+───────────────────────────────────────────────────────────────────────────
+
+CLASE 11: ARCHIVOCANCHA
+───────────────────────────────────────────────────────────────────────────
+Archivo: ArchivoCancha.h
+Archivo de datos: canchas.dat
+Propósito: Gestiona la persistencia de objetos Cancha
+
+ATRIBUTOS:
+  • nombreArchivo [char[30]]
+
+MÉTODOS:
+  • guardar(cancha: Cancha): bool
+  • leer(pos: int): Cancha
+  • contarRegistros(): int
+  • modificar(cancha: Cancha, pos: int): bool
+
+───────────────────────────────────────────────────────────────────────────
+
+CLASE 12: ARCHIVORESERVA
+───────────────────────────────────────────────────────────────────────────
+Archivo: ArchivoReserva.h
+Archivo de datos: reservas.dat
+Propósito: Gestiona la persistencia de objetos Reserva
+
+ATRIBUTOS:
+  • nombreArchivo [char[30]]
+
+MÉTODOS:
+  • guardar(reserva: Reserva): bool
+  • leer(pos: int): Reserva
+  • contarRegistros(): int
+  • modificar(reserva: Reserva, pos: int): bool
+
+───────────────────────────────────────────────────────────────────────────
+
+CLASE 13: ARCHIVOPAGO
+───────────────────────────────────────────────────────────────────────────
+Archivo: ArchivoPago.h
+Archivo de datos: pagos.dat
+Propósito: Gestiona la persistencia de objetos Pago
+
+ATRIBUTOS:
+  • nombreArchivo [char[30]]
+
+MÉTODOS:
+  • guardar(pago: Pago): bool
+  • leer(pos: int): Pago
+  • contarRegistros(): int
+  • modificar(pago: Pago, pos: int): bool
+
+───────────────────────────────────────────────────────────────────────────
+
+CLASE 14: ARCHIVOINSCRIPCION
+───────────────────────────────────────────────────────────────────────────
+Archivo: ArchivoInscripcion.h
+Archivo de datos: inscripciones.dat
+Propósito: Gestiona la persistencia de objetos Inscripcion
+
+ATRIBUTOS:
+  • nombreArchivo [char[30]]
+
+MÉTODOS:
+  • guardar(inscripcion: Inscripcion): bool
+  • leer(pos: int): Inscripcion
+  • contarRegistros(): int
+  • modificar(inscripcion: Inscripcion, pos: int): bool
+
+───────────────────────────────────────────────────────────────────────────
+
+CLASE 15: ARCHIVOASISTENCIA
+───────────────────────────────────────────────────────────────────────────
+Archivo: ArchivoAsistencia.h
+Archivo de datos: asistencias.dat
+Propósito: Gestiona la persistencia de objetos Asistencia
+
+ATRIBUTOS:
+  • nombreArchivo [char[30]]
+
+MÉTODOS:
+  • guardar(asistencia: Asistencia): bool
+  • leer(pos: int): Asistencia
+  • contarRegistros(): int
+  • modificar(asistencia: Asistencia, pos: int): bool
+
+═══════════════════════════════════════════════════════════════════════════
+  EXPLICACIÓN DETALLADA: escribirDisco() y leerDisco()
+═══════════════════════════════════════════════════════════════════════════
+
+PREGUNTA DEL PROFESOR:
+"¿Para qué se usan los métodos leerDisco() y escribirDisco()?"
+
+RESPUESTA:
+───────────────────────────────────────────────────────────────────────────
+
+Estos métodos implementan el patrón de PERSISTENCIA ORIENTADA A OBJETOS,
+permitiendo que cada objeto sea responsable de su propia serialización.
+
+MÉTODO: escribirDisco(pos: int): bool
+───────────────────────────────────────────────────────────────────────────
+PROPÓSITO:
+  Permite que un objeto se escriba a sí mismo en el archivo binario en
+  una posición específica.
+
+FUNCIONAMIENTO:
+  1. Abre el archivo en modo lectura/escritura binaria ("rb+")
+  2. Se posiciona en la ubicación indicada usando fseek()
+  3. Escribe el objeto completo usando fwrite(this, ...)
+  4. Cierra el archivo
+  5. Retorna true si tuvo éxito, false si falló
+
+EJEMPLO DE USO:
+  Socio socio;
+  socio.setNumeroSocio(1);
+  socio.setNombre("Juan");
+  socio.escribirDisco(0);  // Guarda en posición 0
+
+VENTAJAS:
+  • El objeto se guarda a sí mismo (encapsulamiento)
+  • Acceso directo por posición (eficiente)
+  • Código más limpio y orientado a objetos
+
+───────────────────────────────────────────────────────────────────────────
+
+MÉTODO: leerDisco(pos: int): bool
+───────────────────────────────────────────────────────────────────────────
+PROPÓSITO:
+  Permite que un objeto se cargue a sí mismo desde el archivo binario
+  desde una posición específica.
+
+FUNCIONAMIENTO:
+  1. Abre el archivo en modo lectura binaria ("rb")
+  2. Se posiciona en la ubicación indicada usando fseek()
+  3. Lee los datos y los carga en el objeto usando fread(this, ...)
+  4. Cierra el archivo
+  5. Retorna true si tuvo éxito, false si falló
+
+EJEMPLO DE USO:
+  Socio socio;
+  socio.leerDisco(0);  // Carga desde posición 0
+  cout << socio.getNombre();  // Muestra "Juan"
+
+VENTAJAS:
+  • El objeto se carga a sí mismo (encapsulamiento)
+  • Acceso directo por posición (eficiente)
+  • No necesita crear objetos auxiliares
+
+═══════════════════════════════════════════════════════════════════════════
+  DIFERENCIA ENTRE MÉTODOS DE ENTIDAD Y MÉTODOS DE ARCHIVO
+═══════════════════════════════════════════════════════════════════════════
+
+MÉTODOS DE CLASES DE ENTIDAD (escribirDisco/leerDisco):
+───────────────────────────────────────────────────────────────────────────
+• El OBJETO se persiste a sí mismo
+• Responsabilidad: La clase de entidad
+• Uso: Cuando el objeto ya existe y quiere guardarse/cargarse
+• Ejemplo:
+    Socio s;
+    s.setNombre("Juan");
+    s.escribirDisco(0);  // El socio se guarda a sí mismo
+
+MÉTODOS DE CLASES ARCHIVO (guardar/leer/modificar):
+───────────────────────────────────────────────────────────────────────────
+• Una clase EXTERNA gestiona la persistencia
+• Responsabilidad: La clase Archivo
+• Uso: Operaciones CRUD completas sobre el archivo
+• Ejemplo:
+    ArchivoSocio archivo;
+    Socio s;
+    s.setNombre("Juan");
+    archivo.guardar(s);  // El archivo guarda al socio
+    
+    Socio s2 = archivo.leer(0);  // El archivo lee un socio
+
+AMBOS ENFOQUES SON COMPLEMENTARIOS:
+───────────────────────────────────────────────────────────────────────────
+• escribirDisco/leerDisco: Para operaciones simples y directas
+• Clases Archivo: Para operaciones complejas (búsquedas, conteos, etc.)
+
+═══════════════════════════════════════════════════════════════════════════
+  ARCHIVOS DE DATOS GENERADOS
+═══════════════════════════════════════════════════════════════════════════
+
+┌────┬─────────────────────┬──────────────────────────────────────────────┐
+│ N° │ ARCHIVO             │ CONTENIDO                                    │
+├────┼─────────────────────┼──────────────────────────────────────────────┤
+│ 1  │ socios.dat          │ Registros binarios de objetos Socio          │
+│ 2  │ actividades.dat     │ Registros binarios de objetos Actividad      │
+│ 3  │ canchas.dat         │ Registros binarios de objetos Cancha         │
+│ 4  │ reservas.dat        │ Registros binarios de objetos Reserva        │
+│ 5  │ pagos.dat           │ Registros binarios de objetos Pago           │
+│ 6  │ inscripciones.dat   │ Registros binarios de objetos Inscripcion    │
+│ 7  │ asistencias.dat     │ Registros binarios de objetos Asistencia     │
+└────┴─────────────────────┴──────────────────────────────────────────────┘
+
+CARACTERÍSTICAS:
+• Formato: Binario (.dat)
+• Acceso: Directo por posición
+• Tamaño de registro: sizeof(Clase)
+• Persistencia: Permanente en disco
+
+═══════════════════════════════════════════════════════════════════════════
+  TECNOLOGÍAS Y TÉCNICAS UTILIZADAS
+═══════════════════════════════════════════════════════════════════════════
+
+LENGUAJE: C++
+PARADIGMA: Programación Orientada a Objetos (POO)
+COMPILADOR: Clang++
+
+TÉCNICAS DE POO APLICADAS:
+  ✓ Encapsulamiento (atributos privados, métodos públicos)
+  ✓ Abstracción (clases representan entidades del mundo real)
+  ✓ Modularización (separación en archivos .h)
+  ✓ Reutilización (clase Fecha usada en múltiples clases)
+
+PERSISTENCIA:
+  ✓ Archivos binarios (.dat)
+  ✓ Funciones: fopen, fclose, fread, fwrite, fseek, ftell
+  ✓ Modos: "rb" (lectura), "rb+" (lectura/escritura), "ab" (append)
+  ✓ Acceso directo por posición
+
+INTERFAZ:
+  ✓ Librería rlutil.h para colores y utilidades de consola
+  ✓ Menús interactivos con navegación
+
+CONTROL DE VERSIONES:
+  ✓ Git + GitHub
+  ✓ Repositorio: https://github.com/Brungo1/Trabajo-integrador-Informe-Club.git
+
+═══════════════════════════════════════════════════════════════════════════
+  CONCLUSIÓN
+═══════════════════════════════════════════════════════════════════════════
+
+El sistema implementa un modelo completo de gestión de club con:
+
+✓ 15 CLASES totales (8 de entidad + 7 de persistencia)
+✓ 7 ARCHIVOS DE DATOS binarios para persistencia
+✓ MÉTODOS escribirDisco/leerDisco en todas las clases de entidad
+✓ CLASES ARCHIVO con operaciones CRUD completas
+✓ SEPARACIÓN DE RESPONSABILIDADES entre entidades y persistencia
+✓ CUMPLIMIENTO de todas las correcciones solicitadas por el profesor
+
+El proyecto aplica correctamente los conceptos de:
+• Programación Orientada a Objetos
+• Archivos binarios
+• Persistencia de datos
+• Modularización
+• Encapsulamiento
+
+═══════════════════════════════════════════════════════════════════════════

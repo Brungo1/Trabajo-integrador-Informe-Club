@@ -1,6 +1,7 @@
 #ifndef SOCIO_H
 #define SOCIO_H
 #include <cstring>
+#include <cstdio>
 #include "Fecha.h"
 #pragma warning(disable: 4996)
 
@@ -43,6 +44,24 @@ public:
     void setEmail(const char* email) { strcpy(_email, email); }
     void setFechaNacimiento(Fecha fecha) { _fechaNacimiento = fecha; }
     void setEliminado(bool eliminado) { _eliminado = eliminado; }
+
+    bool escribirDisco(int pos) {
+        FILE* p = fopen("socios.dat", "rb+");
+        if (p == NULL) return false;
+        fseek(p, pos * sizeof(Socio), SEEK_SET);
+        bool ok = fwrite(this, sizeof(Socio), 1, p) == 1;
+        fclose(p);
+        return ok;
+    }
+
+    bool leerDisco(int pos) {
+        FILE* p = fopen("socios.dat", "rb");
+        if (p == NULL) return false;
+        fseek(p, pos * sizeof(Socio), SEEK_SET);
+        bool ok = fread(this, sizeof(Socio), 1, p) == 1;
+        fclose(p);
+        return ok;
+    }
 };
 
 #endif

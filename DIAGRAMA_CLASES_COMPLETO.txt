@@ -1,0 +1,418 @@
+═══════════════════════════════════════════════════════════════════════════
+  DIAGRAMA DE CLASES COMPLETO - SISTEMA DE GESTIÓN DE CLUB
+  Según especificaciones del profesor
+═══════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                          CLASE: Socio                                   │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ATRIBUTOS PRIVADOS:                                                     │
+│   -NumSocio [int]                                                       │
+│   -DNI [int]                                                            │
+│   -Nombre [char[30]]                                                    │
+│   -Apellido [char[30]]                                                  │
+│   -Telefono [char[20]]                                                  │
+│   -Email [char[50]]                                                     │
+│   -FechaNacimiento [Fecha]                                              │
+│   -Eliminado [bool]                                                     │
+├─────────────────────────────────────────────────────────────────────────┤
+│ MÉTODOS PÚBLICOS:                                                       │
+│   +getNumeroSocio(): int                                                │
+│   +getDni(): int                                                        │
+│   +getNombre(): char[30]                                                │
+│   +getApellido(): char[30]                                              │
+│   +getTelefono(): char[20]                                              │
+│   +getEmail(): char[50]                                                 │
+│   +getFechaNacimiento(): Fecha                                          │
+│   +getEliminado(): bool                                                 │
+│   +setNumeroSocio(valor: int): void                                     │
+│   +setDni(valor: int): void                                             │
+│   +setNombre(valor: char[30]): void                                     │
+│   +setApellido(valor: char[30]): void                                   │
+│   +setTelefono(valor: char[20]): void                                   │
+│   +setEmail(valor: char[50]): void                                      │
+│   +setFechaNacimiento(valor: Fecha): void                               │
+│   +setEliminado(valor: bool): void                                      │
+│   +cargar(): void                                                       │
+│   +mostrar(): void                                                      │
+│   +escribirDisco(pos: int): bool                                        │
+│   +leerDisco(pos: int): bool                                            │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        CLASE: Actividad                                 │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ATRIBUTOS PRIVADOS:                                                     │
+│   -NumeroActividad [int]                                                │
+│   -Nombre [char[50]]                                                    │
+│   -Responsable [char[50]]                                               │
+│   -FechaInicio [Fecha]                                                  │
+│   -Arancel [float]                                                      │
+│   -Activa [bool]                                                        │
+├─────────────────────────────────────────────────────────────────────────┤
+│ MÉTODOS PÚBLICOS:                                                       │
+│   +getNumeroActividad(): int                                            │
+│   +getNombre(): char[50]                                                │
+│   +getResponsable(): char[50]                                           │
+│   +getFechaInicio(): Fecha                                              │
+│   +getArancel(): float                                                  │
+│   +getActiva(): bool                                                    │
+│   +setNumeroActividad(valor: int): void                                 │
+│   +setNombre(valor: char[50]): void                                     │
+│   +setResponsable(valor: char[50]): void                                │
+│   +setFechaInicio(valor: Fecha): void                                   │
+│   +setArancel(valor: float): void                                       │
+│   +setActiva(valor: bool): void                                         │
+│   +cargar(): void                                                       │
+│   +mostrar(): void                                                      │
+│   +escribirDisco(pos: int): bool                                        │
+│   +leerDisco(pos: int): bool                                            │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                          CLASE: Cancha                                  │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ATRIBUTOS PRIVADOS:                                                     │
+│   -NumeroCancha [int]                                                   │
+│   -Nombre [char[50]]                                                    │
+│   -TipoDeporte [char[30]]                                               │
+│   -Capacidad [int]                                                      │
+│   -TarifaHora [float]                                                   │
+│   -Disponible [bool]                                                    │
+├─────────────────────────────────────────────────────────────────────────┤
+│ MÉTODOS PÚBLICOS:                                                       │
+│   +getNumeroCancha(): int                                               │
+│   +getNombre(): char[50]                                                │
+│   +getTipoDeporte(): char[30]                                           │
+│   +getCapacidad(): int                                                  │
+│   +getTarifaHora(): float                                               │
+│   +getDisponible(): bool                                                │
+│   +setNumeroCancha(valor: int): void                                    │
+│   +setNombre(valor: char[50]): void                                     │
+│   +setTipoDeporte(valor: char[30]): void                                │
+│   +setCapacidad(valor: int): void                                       │
+│   +setTarifaHora(valor: float): void                                    │
+│   +setDisponible(valor: bool): void                                     │
+│   +cargar(): void                                                       │
+│   +mostrar(): void                                                      │
+│   +escribirDisco(pos: int): bool                                        │
+│   +leerDisco(pos: int): bool                                            │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                         CLASE: Reserva                                  │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ATRIBUTOS PRIVADOS:                                                     │
+│   -NumeroReserva [int]                                                  │
+│   -NumeroSocio [int]                                                    │
+│   -NumeroCancha [int]                                                   │
+│   -FechaReserva [Fecha]                                                 │
+│   -HoraInicio [int]                                                     │
+│   -HoraFin [int]                                                        │
+│   -Confirmada [bool]                                                    │
+├─────────────────────────────────────────────────────────────────────────┤
+│ MÉTODOS PÚBLICOS:                                                       │
+│   +getNumeroReserva(): int                                              │
+│   +getNumeroSocio(): int                                                │
+│   +getNumeroCancha(): int                                               │
+│   +getFechaReserva(): Fecha                                             │
+│   +getHoraInicio(): int                                                 │
+│   +getHoraFin(): int                                                    │
+│   +getConfirmada(): bool                                                │
+│   +setNumeroReserva(valor: int): void                                   │
+│   +setNumeroSocio(valor: int): void                                     │
+│   +setNumeroCancha(valor: int): void                                    │
+│   +setFechaReserva(valor: Fecha): void                                  │
+│   +setHoraInicio(valor: int): void                                      │
+│   +setHoraFin(valor: int): void                                         │
+│   +setConfirmada(valor: bool): void                                     │
+│   +cargar(): void                                                       │
+│   +mostrar(): void                                                      │
+│   +escribirDisco(pos: int): bool                                        │
+│   +leerDisco(pos: int): bool                                            │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                           CLASE: Pago                                   │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ATRIBUTOS PRIVADOS:                                                     │
+│   -NumeroPago [int]                                                     │
+│   -NumeroSocio [int]                                                    │
+│   -Monto [float]                                                        │
+│   -Concepto [char[50]]                                                  │
+│   -FechaPago [Fecha]                                                    │
+│   -Procesado [bool]                                                     │
+├─────────────────────────────────────────────────────────────────────────┤
+│ MÉTODOS PÚBLICOS:                                                       │
+│   +getNumeroPago(): int                                                 │
+│   +getNumeroSocio(): int                                                │
+│   +getMonto(): float                                                    │
+│   +getConcepto(): char[50]                                              │
+│   +getFechaPago(): Fecha                                                │
+│   +getProcesado(): bool                                                 │
+│   +setNumeroPago(valor: int): void                                      │
+│   +setNumeroSocio(valor: int): void                                     │
+│   +setMonto(valor: float): void                                         │
+│   +setConcepto(valor: char[50]): void                                   │
+│   +setFechaPago(valor: Fecha): void                                     │
+│   +setProcesado(valor: bool): void                                      │
+│   +cargar(): void                                                       │
+│   +mostrar(): void                                                      │
+│   +escribirDisco(pos: int): bool                                        │
+│   +leerDisco(pos: int): bool                                            │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                       CLASE: Inscripcion                                │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ATRIBUTOS PRIVADOS:                                                     │
+│   -NumeroActividad [int]                                                │
+│   -NumeroSocio [int]                                                    │
+│   -FechaInscripcion [Fecha]                                             │
+├─────────────────────────────────────────────────────────────────────────┤
+│ MÉTODOS PÚBLICOS:                                                       │
+│   +getNumeroActividad(): int                                            │
+│   +getNumeroSocio(): int                                                │
+│   +getFechaInscripcion(): Fecha                                         │
+│   +setNumeroActividad(valor: int): void                                 │
+│   +setNumeroSocio(valor: int): void                                     │
+│   +setFechaInscripcion(valor: Fecha): void                              │
+│   +cargar(): void                                                       │
+│   +mostrar(): void                                                      │
+│   +escribirDisco(pos: int): bool                                        │
+│   +leerDisco(pos: int): bool                                            │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                        CLASE: Asistencia                                │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ATRIBUTOS PRIVADOS:                                                     │
+│   -NumeroSocio [int]                                                    │
+│   -NumeroActividad [int]                                                │
+│   -FechaAsistencia [Fecha]                                              │
+│   -Presente [bool]                                                      │
+├─────────────────────────────────────────────────────────────────────────┤
+│ MÉTODOS PÚBLICOS:                                                       │
+│   +getNumeroSocio(): int                                                │
+│   +getNumeroActividad(): int                                            │
+│   +getFechaAsistencia(): Fecha                                          │
+│   +getPresente(): bool                                                  │
+│   +setNumeroSocio(valor: int): void                                     │
+│   +setNumeroActividad(valor: int): void                                 │
+│   +setFechaAsistencia(valor: Fecha): void                               │
+│   +setPresente(valor: bool): void                                       │
+│   +cargar(): void                                                       │
+│   +mostrar(): void                                                      │
+│   +escribirDisco(pos: int): bool                                        │
+│   +leerDisco(pos: int): bool                                            │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                           CLASE: Fecha                                  │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ATRIBUTOS PRIVADOS:                                                     │
+│   -Dia [int]                                                            │
+│   -Mes [int]                                                            │
+│   -Anio [int]                                                           │
+├─────────────────────────────────────────────────────────────────────────┤
+│ MÉTODOS PÚBLICOS:                                                       │
+│   +getDia(): int                                                        │
+│   +getMes(): int                                                        │
+│   +getAnio(): int                                                       │
+│   +setDia(valor: int): void                                             │
+│   +setMes(valor: int): void                                             │
+│   +setAnio(valor: int): void                                            │
+│   +cargar(): void                                                       │
+│   +mostrar(): void                                                      │
+│   +escribirDisco(pos: int): bool                                        │
+│   +leerDisco(pos: int): bool                                            │
+└─────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════
+  CLASES ARCHIVO (Gestión de Persistencia)
+  Respuesta a la pregunta del profesor: "¿Se van a usar clases Archivo?"
+═══════════════════════════════════════════════════════════════════════════
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                      CLASE: ArchivoSocio                                │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ATRIBUTOS PRIVADOS:                                                     │
+│   -nombreArchivo [char[30]]                                             │
+├─────────────────────────────────────────────────────────────────────────┤
+│ MÉTODOS PÚBLICOS:                                                       │
+│   +guardar(socio: Socio): bool                                          │
+│   +leer(pos: int): Socio                                                │
+│   +contarRegistros(): int                                               │
+│   +modificar(socio: Socio, pos: int): bool                              │
+│   +buscarPorNumero(numeroSocio: int): int                               │
+│   +buscarPorDni(dni: int): int                                          │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ARCHIVO DE DATOS: socios.dat                                            │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                    CLASE: ArchivoActividad                              │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ATRIBUTOS PRIVADOS:                                                     │
+│   -nombreArchivo [char[30]]                                             │
+├─────────────────────────────────────────────────────────────────────────┤
+│ MÉTODOS PÚBLICOS:                                                       │
+│   +guardar(actividad: Actividad): bool                                  │
+│   +leer(pos: int): Actividad                                            │
+│   +contarRegistros(): int                                               │
+│   +modificar(actividad: Actividad, pos: int): bool                      │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ARCHIVO DE DATOS: actividades.dat                                       │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                     CLASE: ArchivoCancha                                │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ATRIBUTOS PRIVADOS:                                                     │
+│   -nombreArchivo [char[30]]                                             │
+├─────────────────────────────────────────────────────────────────────────┤
+│ MÉTODOS PÚBLICOS:                                                       │
+│   +guardar(cancha: Cancha): bool                                        │
+│   +leer(pos: int): Cancha                                               │
+│   +contarRegistros(): int                                               │
+│   +modificar(cancha: Cancha, pos: int): bool                            │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ARCHIVO DE DATOS: canchas.dat                                           │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                    CLASE: ArchivoReserva                                │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ATRIBUTOS PRIVADOS:                                                     │
+│   -nombreArchivo [char[30]]                                             │
+├─────────────────────────────────────────────────────────────────────────┤
+│ MÉTODOS PÚBLICOS:                                                       │
+│   +guardar(reserva: Reserva): bool                                      │
+│   +leer(pos: int): Reserva                                              │
+│   +contarRegistros(): int                                               │
+│   +modificar(reserva: Reserva, pos: int): bool                          │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ARCHIVO DE DATOS: reservas.dat                                          │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                      CLASE: ArchivoPago                                 │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ATRIBUTOS PRIVADOS:                                                     │
+│   -nombreArchivo [char[30]]                                             │
+├─────────────────────────────────────────────────────────────────────────┤
+│ MÉTODOS PÚBLICOS:                                                       │
+│   +guardar(pago: Pago): bool                                            │
+│   +leer(pos: int): Pago                                                 │
+│   +contarRegistros(): int                                               │
+│   +modificar(pago: Pago, pos: int): bool                                │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ARCHIVO DE DATOS: pagos.dat                                             │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                  CLASE: ArchivoInscripcion                              │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ATRIBUTOS PRIVADOS:                                                     │
+│   -nombreArchivo [char[30]]                                             │
+├─────────────────────────────────────────────────────────────────────────┤
+│ MÉTODOS PÚBLICOS:                                                       │
+│   +guardar(inscripcion: Inscripcion): bool                              │
+│   +leer(pos: int): Inscripcion                                          │
+│   +contarRegistros(): int                                               │
+│   +modificar(inscripcion: Inscripcion, pos: int): bool                  │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ARCHIVO DE DATOS: inscripciones.dat                                     │
+└─────────────────────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                   CLASE: ArchivoAsistencia                              │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ATRIBUTOS PRIVADOS:                                                     │
+│   -nombreArchivo [char[30]]                                             │
+├─────────────────────────────────────────────────────────────────────────┤
+│ MÉTODOS PÚBLICOS:                                                       │
+│   +guardar(asistencia: Asistencia): bool                                │
+│   +leer(pos: int): Asistencia                                           │
+│   +contarRegistros(): int                                               │
+│   +modificar(asistencia: Asistencia, pos: int): bool                    │
+├─────────────────────────────────────────────────────────────────────────┤
+│ ARCHIVO DE DATOS: asistencias.dat                                       │
+└─────────────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════════════
+  RESUMEN DE ARCHIVOS DE DATOS
+═══════════════════════════════════════════════════════════════════════════
+
+1. socios.dat          → Almacena objetos de tipo Socio
+2. actividades.dat     → Almacena objetos de tipo Actividad
+3. canchas.dat         → Almacena objetos de tipo Cancha
+4. reservas.dat        → Almacena objetos de tipo Reserva
+5. pagos.dat           → Almacena objetos de tipo Pago
+6. inscripciones.dat   → Almacena objetos de tipo Inscripcion
+7. asistencias.dat     → Almacena objetos de tipo Asistencia
+
+═══════════════════════════════════════════════════════════════════════════
+  EXPLICACIÓN DE MÉTODOS
+═══════════════════════════════════════════════════════════════════════════
+
+MÉTODOS escribirDisco() y leerDisco():
+───────────────────────────────────────────────────────────────────────────
+Presentes en TODAS las clases de entidad (Socio, Actividad, Cancha, etc.)
+
+• escribirDisco(pos: int): bool
+  - Permite que el objeto se escriba a sí mismo en el archivo binario
+  - Parámetro: posición donde se guardará el objeto
+  - Retorna: true si se guardó correctamente, false en caso contrario
+  - Usa: fopen("archivo.dat", "rb+"), fseek(), fwrite()
+
+• leerDisco(pos: int): bool
+  - Permite que el objeto se lea a sí mismo desde el archivo binario
+  - Parámetro: posición desde donde se leerá el objeto
+  - Retorna: true si se leyó correctamente, false en caso contrario
+  - Usa: fopen("archivo.dat", "rb"), fseek(), fread()
+
+MÉTODOS DE LAS CLASES ARCHIVO:
+───────────────────────────────────────────────────────────────────────────
+Presentes en TODAS las clases Archivo (ArchivoSocio, ArchivoActividad, etc.)
+
+• guardar(objeto): bool
+  - Agrega un nuevo objeto al final del archivo
+  - Usa: fopen("archivo.dat", "ab"), fwrite()
+
+• leer(pos: int): Objeto
+  - Lee un objeto desde una posición específica
+  - Usa: fopen("archivo.dat", "rb"), fseek(), fread()
+
+• contarRegistros(): int
+  - Cuenta cuántos objetos hay en el archivo
+  - Usa: fseek(SEEK_END), ftell()
+
+• modificar(objeto, pos: int): bool
+  - Modifica un objeto en una posición específica
+  - Usa: fopen("archivo.dat", "rb+"), fseek(), fwrite()
+
+═══════════════════════════════════════════════════════════════════════════
+  TOTAL DE CLASES: 15
+═══════════════════════════════════════════════════════════════════════════
+
+CLASES DE ENTIDAD: 8
+  1. Socio
+  2. Actividad
+  3. Cancha
+  4. Reserva
+  5. Pago
+  6. Inscripcion
+  7. Asistencia
+  8. Fecha
+
+CLASES ARCHIVO: 7
+  9. ArchivoSocio
+  10. ArchivoActividad
+  11. ArchivoCancha
+  12. ArchivoReserva
+  13. ArchivoPago
+  14. ArchivoInscripcion
+  15. ArchivoAsistencia
+
+═══════════════════════════════════════════════════════════════════════════

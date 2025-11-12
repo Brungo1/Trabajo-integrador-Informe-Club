@@ -1,6 +1,7 @@
 #ifndef PAGO_H
 #define PAGO_H
 #include <cstring>
+#include <cstdio>
 #include "Fecha.h"
 #pragma warning(disable: 4996)
 
@@ -35,6 +36,24 @@ public:
     void setConcepto(const char* concepto) { strcpy(_concepto, concepto); }
     void setFechaPago(Fecha fecha) { _fechaPago = fecha; }
     void setProcesado(bool procesado) { _procesado = procesado; }
+
+    bool escribirDisco(int pos) {
+        FILE* p = fopen("pagos.dat", "rb+");
+        if (p == NULL) return false;
+        fseek(p, pos * sizeof(Pago), SEEK_SET);
+        bool ok = fwrite(this, sizeof(Pago), 1, p) == 1;
+        fclose(p);
+        return ok;
+    }
+
+    bool leerDisco(int pos) {
+        FILE* p = fopen("pagos.dat", "rb");
+        if (p == NULL) return false;
+        fseek(p, pos * sizeof(Pago), SEEK_SET);
+        bool ok = fread(this, sizeof(Pago), 1, p) == 1;
+        fclose(p);
+        return ok;
+    }
 };
 
 #endif
