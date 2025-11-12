@@ -1,0 +1,197 @@
+═══════════════════════════════════════════════════════════════════════════
+  MANUAL DE USO - MÓDULO DE SOCIOS
+  Sistema de Gestión de Club
+═══════════════════════════════════════════════════════════════════════════
+
+✅ FUNCIONALIDADES IMPLEMENTADAS
+───────────────────────────────────────────────────────────────────────────
+
+1. AGREGAR NUEVO SOCIO
+   • Número de socio autoasignado
+   • Validación de DNI duplicado
+   • Captura de todos los datos
+   • Fecha de nacimiento
+   • Opción de cancelar (DNI = 0)
+   • Confirmación antes de guardar (S/N)
+   • Guardado en archivo binario
+
+2. LISTAR TODOS LOS SOCIOS
+   • Muestra solo socios activos (no eliminados)
+   • Contador de socios activos
+   • Formato organizado y legible
+   • Validación si no hay socios activos
+
+3. BUSCAR SOCIO
+   • Búsqueda por DNI
+   • Búsqueda por número de socio
+   • Opción [0] para cancelar
+   • Opción de cancelar en búsqueda (valor = 0)
+   • Muestra información completa
+
+4. MODIFICAR DATOS DE SOCIO
+   • Búsqueda por DNI
+   • Opción de cancelar (DNI = 0)
+   • Modificación de teléfono
+   • Modificación de email
+   • Confirmación antes de guardar (S/N)
+   • Actualización en archivo
+
+5. ELIMINAR SOCIO
+   • Búsqueda por DNI
+   • Opción de cancelar (DNI = 0)
+   • Confirmación antes de eliminar (S/N)
+   • Eliminación lógica (flag)
+   • No se borra físicamente del archivo
+
+═══════════════════════════════════════════════════════════════════════════
+  FLUJO DE USO
+═══════════════════════════════════════════════════════════════════════════
+
+AGREGAR SOCIO:
+───────────────────────────────────────────────────────────────────────────
+1. Seleccionar opción [1] en menú de Socios
+2. Ingresar DNI (0 para cancelar, se valida que no exista)
+3. Ingresar nombre
+4. Ingresar apellido
+5. Ingresar teléfono
+6. Ingresar email
+7. Ingresar fecha de nacimiento (día, mes, año)
+8. El sistema asigna automáticamente el número de socio
+9. Confirmar guardado (S/N)
+10. Confirmación de guardado exitoso
+
+LISTAR SOCIOS:
+───────────────────────────────────────────────────────────────────────────
+1. Seleccionar opción [2] en menú de Socios
+2. Ver contador de socios activos
+3. Ver listado completo de socios activos (no eliminados)
+4. Presionar cualquier tecla para volver
+
+BUSCAR SOCIO:
+───────────────────────────────────────────────────────────────────────────
+1. Seleccionar opción [3] en menú de Socios
+2. Elegir tipo de búsqueda:
+   [1] Por DNI
+   [2] Por número de socio
+   [0] Cancelar
+3. Ingresar el valor a buscar (0 para cancelar)
+4. Ver información del socio encontrado
+
+MODIFICAR SOCIO:
+───────────────────────────────────────────────────────────────────────────
+1. Seleccionar opción [4] en menú de Socios
+2. Ingresar DNI del socio (0 para cancelar)
+3. Ver datos actuales
+4. Ingresar nuevo teléfono
+5. Ingresar nuevo email
+6. Confirmar modificación (S/N)
+7. Confirmación de modificación exitosa
+
+ELIMINAR SOCIO:
+───────────────────────────────────────────────────────────────────────────
+1. Seleccionar opción [5] en menú de Socios
+2. Ingresar DNI del socio (0 para cancelar)
+3. Ver datos del socio
+4. Confirmar eliminación (S/N)
+5. El socio se marca como eliminado (no aparecerá en listados)
+
+═══════════════════════════════════════════════════════════════════════════
+  VALIDACIONES IMPLEMENTADAS
+═══════════════════════════════════════════════════════════════════════════
+
+✓ DNI único (no permite duplicados)
+✓ Número de socio autoasignado (no puede repetirse)
+✓ Búsqueda solo en socios activos (no eliminados)
+✓ Confirmación antes de guardar nuevo socio (S/N)
+✓ Confirmación antes de modificar (S/N)
+✓ Confirmación antes de eliminar (S/N)
+✓ Opción de cancelar en todas las operaciones (0 o N)
+✓ Validación de existencia antes de modificar/eliminar
+✓ Contador de socios activos (excluye eliminados)
+
+═══════════════════════════════════════════════════════════════════════════
+  ARCHIVO DE DATOS
+═══════════════════════════════════════════════════════════════════════════
+
+NOMBRE: socios.dat
+FORMATO: Binario
+UBICACIÓN: Mismo directorio que club.exe
+
+ESTRUCTURA:
+  • Se crea automáticamente al agregar el primer socio
+  • Cada registro ocupa sizeof(Socio) bytes
+  • Acceso directo por posición
+  • Los socios eliminados permanecen en el archivo con flag=true
+
+═══════════════════════════════════════════════════════════════════════════
+  EJEMPLO DE USO COMPLETO
+═══════════════════════════════════════════════════════════════════════════
+
+PASO 1: Agregar un socio
+───────────────────────────────────────────────────────────────────────────
+  Numero de Socio: 1 (autoasignado)
+  DNI: 12345678
+  Nombre: Juan
+  Apellido: Pérez
+  Telefono: 1234-5678
+  Email: juan@email.com
+  Fecha de Nacimiento:
+    Dia: 15
+    Mes: 5
+    Anio: 1990
+  
+  [EXITO] Socio agregado correctamente!
+
+PASO 2: Listar socios
+───────────────────────────────────────────────────────────────────────────
+  Total de socios activos: 1
+
+  • Socio #1
+    DNI: 12345678
+    Nombre: Juan Pérez
+    Telefono: 1234-5678
+    Email: juan@email.com
+    Fecha Nac: 15/5/1990
+
+PASO 3: Buscar socio por DNI
+───────────────────────────────────────────────────────────────────────────
+  Ingrese DNI: 12345678
+  
+  [ENCONTRADO]
+  
+  Socio #1
+  DNI: 12345678
+  Nombre: Juan Pérez
+  Telefono: 1234-5678
+  Email: juan@email.com
+  Fecha Nac: 15/5/1990
+
+PASO 4: Modificar socio
+───────────────────────────────────────────────────────────────────────────
+  Ingrese DNI del socio: 12345678
+  
+  Socio encontrado: Juan Pérez
+  
+  Telefono actual: 1234-5678
+  Nuevo telefono: 9999-8888
+  
+  Email actual: juan@email.com
+  Nuevo email: juanperez@email.com
+  
+  [EXITO] Socio modificado correctamente!
+
+═══════════════════════════════════════════════════════════════════════════
+  NOTAS TÉCNICAS
+═══════════════════════════════════════════════════════════════════════════
+
+• El número de socio se asigna automáticamente como: total + 1
+• La eliminación es lógica (flag _eliminado = true)
+• Los socios eliminados no aparecen en búsquedas ni listados
+• El contador muestra solo socios activos (no eliminados)
+• El archivo socios.dat se crea automáticamente si no existe
+• Todas las operaciones usan la clase ArchivoSocio
+• No se usan métodos leerDisco/escribirDisco en las entidades
+• Opción de cancelar: ingresar 0 en campos numéricos o N en confirmaciones
+• Todas las operaciones críticas requieren confirmación (S/N)
+
+═══════════════════════════════════════════════════════════════════════════
