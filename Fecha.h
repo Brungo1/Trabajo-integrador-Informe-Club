@@ -21,24 +21,6 @@ public:
     void setDia(int dia) { _dia = dia; }
     void setMes(int mes) { _mes = mes; }
     void setAnio(int anio) { _anio = anio; }
-
-    bool escribirDisco(int pos) {
-        FILE* p = fopen("fechas.dat", "rb+");
-        if (p == NULL) return false;
-        fseek(p, pos * sizeof(Fecha), SEEK_SET);
-        bool ok = fwrite(this, sizeof(Fecha), 1, p) == 1;
-        fclose(p);
-        return ok;
-    }
-
-    bool leerDisco(int pos) {
-        FILE* p = fopen("fechas.dat", "rb");
-        if (p == NULL) return false;
-        fseek(p, pos * sizeof(Fecha), SEEK_SET);
-        bool ok = fread(this, sizeof(Fecha), 1, p) == 1;
-        fclose(p);
-        return ok;
-    }
 };
 
 #endif

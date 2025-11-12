@@ -33,10 +33,6 @@
 │   +setEmail(valor: char[50]): void                                      │
 │   +setFechaNacimiento(valor: Fecha): void                               │
 │   +setEliminado(valor: bool): void                                      │
-│   +cargar(): void                                                       │
-│   +mostrar(): void                                                      │
-│   +escribirDisco(pos: int): bool                                        │
-│   +leerDisco(pos: int): bool                                            │
 └─────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -63,10 +59,6 @@
 │   +setFechaInicio(valor: Fecha): void                                   │
 │   +setArancel(valor: float): void                                       │
 │   +setActiva(valor: bool): void                                         │
-│   +cargar(): void                                                       │
-│   +mostrar(): void                                                      │
-│   +escribirDisco(pos: int): bool                                        │
-│   +leerDisco(pos: int): bool                                            │
 └─────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -93,10 +85,6 @@
 │   +setCapacidad(valor: int): void                                       │
 │   +setTarifaHora(valor: float): void                                    │
 │   +setDisponible(valor: bool): void                                     │
-│   +cargar(): void                                                       │
-│   +mostrar(): void                                                      │
-│   +escribirDisco(pos: int): bool                                        │
-│   +leerDisco(pos: int): bool                                            │
 └─────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -126,10 +114,6 @@
 │   +setHoraInicio(valor: int): void                                      │
 │   +setHoraFin(valor: int): void                                         │
 │   +setConfirmada(valor: bool): void                                     │
-│   +cargar(): void                                                       │
-│   +mostrar(): void                                                      │
-│   +escribirDisco(pos: int): bool                                        │
-│   +leerDisco(pos: int): bool                                            │
 └─────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -156,10 +140,6 @@
 │   +setConcepto(valor: char[50]): void                                   │
 │   +setFechaPago(valor: Fecha): void                                     │
 │   +setProcesado(valor: bool): void                                      │
-│   +cargar(): void                                                       │
-│   +mostrar(): void                                                      │
-│   +escribirDisco(pos: int): bool                                        │
-│   +leerDisco(pos: int): bool                                            │
 └─────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -177,10 +157,6 @@
 │   +setNumeroActividad(valor: int): void                                 │
 │   +setNumeroSocio(valor: int): void                                     │
 │   +setFechaInscripcion(valor: Fecha): void                              │
-│   +cargar(): void                                                       │
-│   +mostrar(): void                                                      │
-│   +escribirDisco(pos: int): bool                                        │
-│   +leerDisco(pos: int): bool                                            │
 └─────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -201,10 +177,6 @@
 │   +setNumeroActividad(valor: int): void                                 │
 │   +setFechaAsistencia(valor: Fecha): void                               │
 │   +setPresente(valor: bool): void                                       │
-│   +cargar(): void                                                       │
-│   +mostrar(): void                                                      │
-│   +escribirDisco(pos: int): bool                                        │
-│   +leerDisco(pos: int): bool                                            │
 └─────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -222,10 +194,6 @@
 │   +setDia(valor: int): void                                             │
 │   +setMes(valor: int): void                                             │
 │   +setAnio(valor: int): void                                            │
-│   +cargar(): void                                                       │
-│   +mostrar(): void                                                      │
-│   +escribirDisco(pos: int): bool                                        │
-│   +leerDisco(pos: int): bool                                            │
 └─────────────────────────────────────────────────────────────────────────┘
 
 ═══════════════════════════════════════════════════════════════════════════
@@ -356,21 +324,17 @@
   EXPLICACIÓN DE MÉTODOS
 ═══════════════════════════════════════════════════════════════════════════
 
-MÉTODOS escribirDisco() y leerDisco():
+MÉTODOS DE LAS CLASES DE ENTIDAD:
 ───────────────────────────────────────────────────────────────────────────
-Presentes en TODAS las clases de entidad (Socio, Actividad, Cancha, etc.)
+Todas las clases de entidad (Socio, Actividad, Cancha, etc.) tienen:
 
-• escribirDisco(pos: int): bool
-  - Permite que el objeto se escriba a sí mismo en el archivo binario
-  - Parámetro: posición donde se guardará el objeto
-  - Retorna: true si se guardó correctamente, false en caso contrario
-  - Usa: fopen("archivo.dat", "rb+"), fseek(), fwrite()
+• Getters (get...): Métodos para obtener el valor de cada atributo
+• Setters (set...): Métodos para establecer el valor de cada atributo
+• Constructor: Inicializa los atributos con valores por defecto
 
-• leerDisco(pos: int): bool
-  - Permite que el objeto se lea a sí mismo desde el archivo binario
-  - Parámetro: posición desde donde se leerá el objeto
-  - Retorna: true si se leyó correctamente, false en caso contrario
-  - Usa: fopen("archivo.dat", "rb"), fseek(), fread()
+La entrada/salida de datos se realiza usando estos getters y setters,
+lo que proporciona flexibilidad para formatear los datos según las
+necesidades de cada módulo del sistema.
 
 MÉTODOS DE LAS CLASES ARCHIVO:
 ───────────────────────────────────────────────────────────────────────────

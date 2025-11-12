@@ -26,24 +26,6 @@ public:
     void setNumeroActividad(int num) { _numeroActividad = num; }
     void setFechaAsistencia(Fecha fecha) { _fechaAsistencia = fecha; }
     void setPresente(bool presente) { _presente = presente; }
-
-    bool escribirDisco(int pos) {
-        FILE* p = fopen("asistencias.dat", "rb+");
-        if (p == NULL) return false;
-        fseek(p, pos * sizeof(Asistencia), SEEK_SET);
-        bool ok = fwrite(this, sizeof(Asistencia), 1, p) == 1;
-        fclose(p);
-        return ok;
-    }
-
-    bool leerDisco(int pos) {
-        FILE* p = fopen("asistencias.dat", "rb");
-        if (p == NULL) return false;
-        fseek(p, pos * sizeof(Asistencia), SEEK_SET);
-        bool ok = fread(this, sizeof(Asistencia), 1, p) == 1;
-        fclose(p);
-        return ok;
-    }
 };
 
 #endif

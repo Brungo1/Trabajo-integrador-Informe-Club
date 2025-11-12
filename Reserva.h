@@ -40,24 +40,6 @@ public:
     void setHoraInicio(int hora) { _horaInicio = hora; }
     void setHoraFin(int hora) { _horaFin = hora; }
     void setConfirmada(bool conf) { _confirmada = conf; }
-
-    bool escribirDisco(int pos) {
-        FILE* p = fopen("reservas.dat", "rb+");
-        if (p == NULL) return false;
-        fseek(p, pos * sizeof(Reserva), SEEK_SET);
-        bool ok = fwrite(this, sizeof(Reserva), 1, p) == 1;
-        fclose(p);
-        return ok;
-    }
-
-    bool leerDisco(int pos) {
-        FILE* p = fopen("reservas.dat", "rb");
-        if (p == NULL) return false;
-        fseek(p, pos * sizeof(Reserva), SEEK_SET);
-        bool ok = fread(this, sizeof(Reserva), 1, p) == 1;
-        fclose(p);
-        return ok;
-    }
 };
 
 #endif
