@@ -87,7 +87,23 @@ void nuevaReserva() {
     cout << "\n  Hora de inicio (0-23): ";
     cin >> hora;
     reserva.setHoraInicio(hora);
-    reserva.setHoraFin(hora + 1);
+    
+    int horaFin;
+    cout << "  Hora de finalizacion (" << (hora + 1) << "-23): ";
+    cin >> horaFin;
+    
+    if (horaFin <= hora) {
+        rlutil::setColor(rlutil::LIGHTRED);
+        cout << "\n  [ERROR] La hora de finalizacion debe ser mayor a la de inicio." << endl;
+        rlutil::setColor(rlutil::WHITE);
+        rlutil::anykey();
+        return;
+    }
+    
+    reserva.setHoraFin(horaFin);
+    
+    int horas = horaFin - hora;
+    float costoTotal = horas * c.getTarifaHora();
     
     reserva.setConfirmada(true);
     
@@ -103,7 +119,8 @@ void nuevaReserva() {
     if (archivo.guardar(reserva)) {
         rlutil::setColor(rlutil::LIGHTGREEN);
         cout << "\n  [EXITO] Reserva registrada correctamente!" << endl;
-        cout << "  Costo: $" << c.getTarifaHora() << endl;
+        cout << "  Duracion: " << horas << " hora(s)" << endl;
+        cout << "  Costo total: $" << costoTotal << " (" << horas << " x $" << c.getTarifaHora() << ")" << endl;
     } else {
         rlutil::setColor(rlutil::LIGHTRED);
         cout << "\n  [ERROR] No se pudo registrar la reserva." << endl;

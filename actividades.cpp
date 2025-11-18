@@ -264,7 +264,7 @@ void desactivarActividad() {
     char confirma;
     
     rlutil::cls();
-    mostrarEncabezado("DESACTIVAR ACTIVIDAD", rlutil::LIGHTRED);
+    mostrarEncabezado("ELIMINAR ACTIVIDAD", rlutil::LIGHTRED);
     
     cout << "  Ingrese ID de actividad (0 para cancelar): ";
     cin >> id;
@@ -295,19 +295,39 @@ void desactivarActividad() {
     cout << "  Responsable: " << a.getResponsable() << "\n\n";
     
     rlutil::setColor(rlutil::YELLOW);
-    cout << "  Esta seguro de desactivar esta actividad? (S/N): ";
+    cout << "  ATENCION: Esta accion eliminara permanentemente la actividad." << endl;
+    cout << "  El ID " << id << " no podra ser reutilizado." << endl;
+    cout << "  Esta seguro de eliminar esta actividad? (S/N): ";
     rlutil::setColor(rlutil::WHITE);
     cin >> confirma;
     
     if (confirma == 'S' || confirma == 's') {
-        a.setActiva(false);
-        if (archivo.modificar(a, pos)) {
-            rlutil::setColor(rlutil::LIGHTGREEN);
-            cout << "\n  [EXITO] Actividad desactivada correctamente!" << endl;
-        } else {
+        // Crear archivo temporal
+        FILE* temp = fopen("temp_actividades.dat", "wb");
+        if (temp == NULL) {
             rlutil::setColor(rlutil::LIGHTRED);
-            cout << "\n  [ERROR] No se pudo desactivar la actividad." << endl;
+            cout << "\n  [ERROR] No se pudo crear archivo temporal." << endl;
+            rlutil::setColor(rlutil::WHITE);
+            rlutil::anykey();
+            return;
         }
+        
+        // Copiar todos los registros excepto el eliminado
+        for (int i = 0; i < total; i++) {
+            if (i != pos) {
+                Actividad temp_a = archivo.leer(i);
+                fwrite(&temp_a, sizeof(Actividad), 1, temp);
+            }
+        }
+        fclose(temp);
+        
+        // Reemplazar archivo original
+        remove("actividades.dat");
+        rename("temp_actividades.dat", "actividades.dat");
+        
+        rlutil::setColor(rlutil::LIGHTGREEN);
+        cout << "\n  [EXITO] Actividad eliminada permanentemente!" << endl;
+        cout << "  El ID " << id << " ya no esta disponible." << endl;
     } else {
         cout << "\n  Operacion cancelada." << endl;
     }
