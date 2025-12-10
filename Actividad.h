@@ -19,7 +19,7 @@ public:
         _numeroActividad = 0;
         strcpy(_nombre, "");
         strcpy(_responsable, "");
-        _arancel = 0.0f;
+        _arancel = 0.0;
         _activa = true;
     }
 

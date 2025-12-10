@@ -18,7 +18,7 @@ public:
     Pago() {
         _numeroPago = 0;
         _numeroSocio = 0;
-        _monto = 0.0f;
+        _monto = 0.0;
         strcpy(_concepto, "");
         _procesado = false;
     }

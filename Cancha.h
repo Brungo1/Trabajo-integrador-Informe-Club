@@ -19,7 +19,7 @@ public:
         strcpy(_nombre, "");
         strcpy(_tipoDeporte, "");
         _capacidad = 0;
-        _tarifaHora = 0.0f;
+        _tarifaHora = 0.0;
         _disponible = true;
     }
 
