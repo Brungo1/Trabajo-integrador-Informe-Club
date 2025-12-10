@@ -152,6 +152,12 @@ void menuSocios() {
             case 3: buscarSocio(); break;
             case 4: modificarSocio(); break;
             case 5: eliminarSocio(); break;
+            case 0: break;
+            default:
+                rlutil::setColor(rlutil::LIGHTRED);
+                cout << "\n  [ERROR] Opcion invalida. Intente nuevamente." << endl;
+                rlutil::setColor(rlutil::WHITE);
+                rlutil::anykey();
         }
     } while(opcion != 0);
 }
@@ -212,6 +218,12 @@ void menuActividades() {
             case 4: buscarActividadPorNombre(); break;
             case 5: modificarActividad(); break;
             case 6: desactivarActividad(); break;
+            case 0: break;
+            default:
+                rlutil::setColor(rlutil::LIGHTRED);
+                cout << "\n  [ERROR] Opcion invalida. Intente nuevamente." << endl;
+                rlutil::setColor(rlutil::WHITE);
+                rlutil::anykey();
         }
     } while(opcion != 0);
 }
@@ -266,6 +278,12 @@ void menuInscripciones() {
             case 3: buscarInscripcionesPorSocio(); break;
             case 4: buscarInscripcionesPorActividad(); break;
             case 5: cancelarInscripcion(); break;
+            case 0: break;
+            default:
+                rlutil::setColor(rlutil::LIGHTRED);
+                cout << "\n  [ERROR] Opcion invalida. Intente nuevamente." << endl;
+                rlutil::setColor(rlutil::WHITE);
+                rlutil::anykey();
         }
     } while(opcion != 0);
 }
@@ -320,6 +338,12 @@ void menuPagos() {
             case 3: buscarPagosPorSocio(); break;
             case 4: modificarEstadoPago(); break;
             case 5: reportePagos(); break;
+            case 0: break;
+            default:
+                rlutil::setColor(rlutil::LIGHTRED);
+                cout << "\n  [ERROR] Opcion invalida. Intente nuevamente." << endl;
+                rlutil::setColor(rlutil::WHITE);
+                rlutil::anykey();
         }
     } while(opcion != 0);
 }
@@ -380,6 +404,12 @@ void menuCanchas() {
             case 4: buscarCanchaPorTipo(); break;
             case 5: modificarCancha(); break;
             case 6: cambiarDisponibilidad(); break;
+            case 0: break;
+            default:
+                rlutil::setColor(rlutil::LIGHTRED);
+                cout << "\n  [ERROR] Opcion invalida. Intente nuevamente." << endl;
+                rlutil::setColor(rlutil::WHITE);
+                rlutil::anykey();
         }
     } while(opcion != 0);
 }
@@ -434,6 +464,12 @@ void menuReservas() {
             case 3: buscarReservasPorSocio(); break;
             case 4: buscarReservasPorCancha(); break;
             case 5: cancelarReserva(); break;
+            case 0: break;
+            default:
+                rlutil::setColor(rlutil::LIGHTRED);
+                cout << "\n  [ERROR] Opcion invalida. Intente nuevamente." << endl;
+                rlutil::setColor(rlutil::WHITE);
+                rlutil::anykey();
         }
     } while(opcion != 0);
 }
@@ -488,6 +524,12 @@ void menuAsistencia() {
             case 3: buscarAsistenciaPorSocio(); break;
             case 4: buscarAsistenciaPorActividad(); break;
             case 5: reporteAsistencia(); break;
+            case 0: break;
+            default:
+                rlutil::setColor(rlutil::LIGHTRED);
+                cout << "\n  [ERROR] Opcion invalida. Intente nuevamente." << endl;
+                rlutil::setColor(rlutil::WHITE);
+                rlutil::anykey();
         }
     } while(opcion != 0);
 }
